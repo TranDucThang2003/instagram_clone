@@ -10,23 +10,31 @@ class InstagramLoginNewAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          padding: const EdgeInsets.all(16),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight:
+                  MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).padding.top -
+                  50,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(),
+                Column(
                   children: [
                     Image.asset(
-                      IconAssets.instagramLogo,
-                      width: 300,
-                      height: 100,
+                      IconAssets.instagram,
+                      width: 50,
+                      height: 50,
                       fit: BoxFit.contain,
                     ),
-                    SizedBox(height: 36),
+                    SizedBox(height: 72),
                     CustomInput(
                       hintText: "Username",
                       obscureText: false,
@@ -38,91 +46,35 @@ class InstagramLoginNewAccount extends StatelessWidget {
                       obscureText: true,
                       required: false,
                     ),
-                    SizedBox(height: 12),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Forgot password?",
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16),
+                    SizedBox(height: 8),
                     CustomButton(onPressed: () {}, buttonName: "Login"),
-                    SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          IconAssets.facebook,
-                          width: 30,
-                          height: 30,
-                          fit: BoxFit.contain,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          "Log in with Facebook",
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 36),
-
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            color: Colors.grey.shade300,
-                            thickness: 1,
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 18),
-                          child: Text(
-                            'OR',
-                            style: TextStyle(
-                              color: Colors.grey.shade500,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-
-                        Expanded(
-                          child: Divider(
-                            color: Colors.grey.shade300,
-                            thickness: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 36),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Don't you have account?"),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Sign up",
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                      ],
+                    SizedBox(height: 12),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Forgot password?",
+                        style: TextStyle(color: Colors.blue),
+                      ),
                     ),
                   ],
                 ),
-              ),
+                Column(
+                  children: [
+                    CustomOutlinedButton(
+                      onPressed: () {},
+                      buttonName: "Sign up",
+                    ),
+                    Image.asset(
+                      IconAssets.meta,
+                      width: 50,
+                      height: 50,
+                      fit: BoxFit.contain,
+                    ),
+                  ]
+                )
+              ],
             ),
-            SizedBox(height: 60),
-            Divider(color: Colors.grey.shade300, thickness: 1),
-            Center(child: Text("Instagram from Meta")),
-          ],
+          ),
         ),
       ),
     );

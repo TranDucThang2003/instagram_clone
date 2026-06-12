@@ -22,7 +22,7 @@ class CustomInput extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
         color: const Color(0xFFFAFAFA),
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: const Color(0xFFDBDBDB),
         ),
